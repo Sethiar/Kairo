@@ -1,4 +1,21 @@
-/venv
+# Virtual environment
+/venv/
+
+# Environment variables
 .env
 
-/__pyc__
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Logs and databases
+*.log
+*.sqlite3
+*.db
+
+# OS / editor files
+.DS_Store
+*.swp
+.idea/
+.vscode/
+*.bak
