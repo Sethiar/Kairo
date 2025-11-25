@@ -8,8 +8,9 @@ class RightPanel(QWidget):
         super().__init__()
         self.setObjectName("RightPanel")
         self.setStyleSheet(f"""
-            background-color: {StyleManager.get('BACKGROUND_COLOR')};
-            border: 2px solid {StyleManager.get('TEXT_COLOR_1')};
+            background-color: "#FFFFFF";
+            color: #000000;
+            border: 2px solid #FFFFFF;
             border-radius: 18px;
         """)
 

@@ -1,42 +1,43 @@
 {
     "BORDER_RADIUS": "12px",
     "BORDER_RADIUS_BTN": "12px",
-    "BORDER_RADIUS_SCR": "8",
+    "BORDER_RADIUS_SCR": "8px",
     "BORDER_RADIUS_IMAGE": "50px",
     "BORDER_WIDTH": "2px",
-    "LINE_HEIGHT": "2px",
 
-    "PRIMARY_COLOR": "#E68516",
-    "SECONDARY_COLOR": "#E2EE38",
-    "ACCENT_COLOR": "#E74C3C",
 
-    "BACKGROUND_COLOR": "#FFFFFF",
-    "SETTINGS_BG_COLOR": "#D4E0F1F9",
-    "INPUT_BACKGROUND_COLOR": "#34495E",
+    "BACKGROUND_COLOR": "#C2CDDBF8",
+    "SETTINGS_BG_COLOR": "#C2CDDBF8",
+
+    "BACKGROUND_COLOR_COMBO": "#EBF0F5F8",
+    "BG_DISABLED_COLOR": "#95A5A6",
+    "INPUT_BACKGROUND_COLOR": "#FFFFFF",
+    
+    
     "MENU_BACKGROUND_COLOR": "#22313F",
-
-    "BG_INPUT": "#FFFFFF",
-
-    "LINE_SETTING_COLOR": "#cccccc",
-
-    "BTN_SETTING_BG_COLOR": "#85919C",
-    "BUTTON_FG": "#ffffff",
-    "BTN_SETTING_HOVER_BG_COLOR": "#34495E",
-    "BUTTON_FG_HOVER": "#d8c6c6",
-
-    "TEXT_COLOR_1": "#FFFFFF",
-    "TEXT_COLOR_2": "#000000",
-    "MENU_TEXT": "#E8EAED",
-    "SETTING_TITLE_COLOR": "#1a1d1f",
-
-    "DISABLED_COLOR": "#95A5A6",
-
-    "LINE_COLOR": "#E9DE4E",
-    "BORDER_COLOR": "#2C3E50",
-
+    "MENU_TEXT": "#000000",
     "MENU_HOVER_BG": "rgba(255,255,255,0.08)",
     "MENU_ACTIVE_BG": "rgba(255,255,255,0.15)",
 
+
+    "LINE_SETTING_COLOR": "#22313F",
+    "LINE_HEIGHT": "2px",
+    
+    "BUTTON_FG": "#FFFFFF",
+    "BUTTON_FG_HOVER": "#d8c6c6",
+    
+    
+    "SETTING_TITLE_COLOR": "#1a1d1f",
+    "BTN_SETTING_BG_COLOR": "#85919C",
+    "BTN_SETTING_HOVER_BG_COLOR": "#34495E",
+
+    "TEXT_COLOR_1": "#000000",
+
+
+    "LINE_COLOR": "#000000",
+    "BORDER_COLOR": "#2C3E50",
+    
+    
     "FONT_FAMILY": "Lato, Arial, sans-serif",
     "FONT_SIZE_DEFAULT": "16px",
 
@@ -47,7 +48,7 @@
     "FONT_SIZE_BULLET": "18px",
 
     "FONT_SIZE_TITLE_SETTING": "25px",
-    "FONT_SIZE_SETTINGS": "16px",
+    "FONT_SIZE_SETTING": "14px",
     "FONT_SIZE_BUTTON": "16px",
 
     "FONT_WEIGHT_LIGHT": "300",

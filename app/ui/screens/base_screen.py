@@ -4,6 +4,7 @@ from PyQt6.QtWidgets import QWidget, QVBoxLayout, QScrollArea
 from PyQt6.QtCore import Qt
 
 from app.styles.style_manager import StyleManager
+from app.core.settings.theme_manager import ThemeManager
 
 
 class BaseScreen(QWidget):
@@ -14,36 +15,43 @@ class BaseScreen(QWidget):
     - Scroll optionnel
     """
 
-    def __init__(self, scroll: bool = False):
+    def __init__(self, scroll=False):
         super().__init__()
-
-        # Application du style global pour tous les écrans
-        self.setStyleSheet(f"""
-            background-color: {StyleManager.get("SETTINGS_BG_COLOR")};
-            color: {StyleManager.get("TEXT_COLOR_2")};
-        """)
-
+        self.outer_layout = QVBoxLayout(self)
+        self.outer_layout.setContentsMargins(0, 0, 0, 0)
+        
+        # --------------------------
+        # MODE AVEC SCROLL
+        # --------------------------
         if scroll:
-            # --------------------------
-            # MODE AVEC SCROLL
-            # --------------------------
-            self.outer_layout = QVBoxLayout(self)
-            self.outer_layout.setContentsMargins(0, 0, 0, 0)
 
-            self.scroll_area = QScrollArea()
-            self.scroll_area.setWidgetResizable(True)
-            self.scroll_area.setFrameShape(QScrollArea.Shape.NoFrame)
-            self.scroll_area.setStyleSheet("border: none;")
+            scroll_area = QScrollArea()
+            scroll_area.setWidgetResizable(True)
+             
+            self.inner_widget = QWidget()
+            scroll_area.setWidget(self.inner_widget)
+            
+            self.inner_layout = QVBoxLayout(self.inner_widget)
+            
+            self.outer_layout.addWidget(scroll_area)
 
-            self.container = QWidget()
-            self.layout = QVBoxLayout(self.container)
-            self.layout.setContentsMargins(20, 20, 20, 20)
-
-            self.scroll_area.setWidget(self.container)
-            self.outer_layout.addWidget(self.scroll_area)
         else:
-            # --------------------------
-            # MODE SANS SCROLL (simple)
-            # --------------------------
-            self.layout = QVBoxLayout(self)
-            self.layout.setContentsMargins(20, 20, 20, 20)
+            self.inner_widget = self
+            self.inner_layout = QVBoxLayout(self)
+            
+        # Thème appliqué ici
+        self.apply_theme()    
+        
+        # Mise à jour dynamique
+        ThemeManager.get_instance().theme_changed.connect(self.apply_theme)
+        
+    
+    def apply_theme(self):
+        """Applique le thème au fond de tous les écrans."""
+        self.setStyleSheet(f"""
+            QWidget {{
+                background-color: {StyleManager.get('SETTINGS_BG_COLOR')};
+            }}
+        """)
+        
+        

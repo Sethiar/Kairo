@@ -49,7 +49,7 @@ VARS_FONTS = {
     "FONT_SIZE_TITLE_SETTING": "25px",
     
     # Taille de la police des settings
-    "FONT_SIZE_SETTINGS": "16px", 
+    "FONT_SIZE_SETTING": "14px", 
     
     # Taille de la police des boutons du settings
     "FONT_SIZE_BUTTON": "16px",

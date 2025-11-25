@@ -4,7 +4,7 @@ from app.styles.style_manager import StyleManager
 from app.core.settings.theme_manager import ThemeManager
 
 class HoverButton(QPushButton):
-    def __init__(self, text="", width=120, height=40):
+    def __init__(self, text="", width=150, height=40):
         super().__init__(text)
         self.setFixedSize(width, height)
         self.setCursor(Qt.CursorShape.PointingHandCursor)
@@ -15,13 +15,12 @@ class HoverButton(QPushButton):
         self.default_bg = StyleManager.get("BTN_SETTING_BG_COLOR")
         self.hover_bg = StyleManager.get("BTN_SETTING_HOVER_BG_COLOR")
         self.default_fg = StyleManager.get("BUTTON_FG")
-        self.hover_fg = StyleManager.get("BUTTON_FG_HOVER")
         self.setStyleSheet(f"""
             QPushButton {{
                 background-color: {self.default_bg};
                 color: {self.default_fg};
                 border-radius: {StyleManager.get('BORDER_RADIUS_BTN')};
-                font-size: {StyleManager.get('FONT_SIZE_SETTINGS')}px;
+                font-size: {StyleManager.get_scaled_font('FONT_SIZE_SETTING')};
             }}
         """)
 
@@ -29,9 +28,9 @@ class HoverButton(QPushButton):
         self.setStyleSheet(f"""
             QPushButton {{
                 background-color: {self.hover_bg};
-                color: {self.hover_fg};
+                color: {self.default_fg};
                 border-radius: {StyleManager.get('BORDER_RADIUS_BTN')};
-                font-size: {StyleManager.get('FONT_SIZE_SETTINGS')}px;
+                font-size: {StyleManager.get_scaled_font('FONT_SIZE_SETTING')};
             }}
         """)
         super().enterEvent(event)

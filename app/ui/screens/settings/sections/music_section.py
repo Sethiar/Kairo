@@ -1,9 +1,9 @@
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QFrame
 from PyQt6.QtCore import Qt
-from app.styles.style_manager import StyleManager
 
 from app.ui.screens.settings.settings_widgets.music_widgets import MusicWidget
-from app.ui.screens.settings.settings_widgets.title_lable import TitleLabel
+from app.ui.screens.settings.settings_widgets.separator_widgets import CustomSeparator
+from app.ui.screens.settings.settings_widgets.title_label import TitleLabel
 
 class MusicSection(QWidget):
     """Section wrapper (titre + séparateur + widget music)."""
@@ -17,11 +17,8 @@ class MusicSection(QWidget):
         title = TitleLabel("Paramètres de la bibliothèque musicale")
         self.main_layout.addWidget(title, alignment=Qt.AlignmentFlag.AlignTop)
 
-        sep = QFrame()
-        sep.setFrameShape(QFrame.Shape.HLine)
-        sep.setFixedHeight(2)
-        sep.setStyleSheet(f"background-color: {StyleManager.get('LINE_COLOR')}; border: none;")
-        self.main_layout.addWidget(sep)
+        separator = CustomSeparator()
+        self.main_layout.addWidget(separator)
         self.main_layout.addSpacing(12)
 
         # Le widget qui contient la liste + boutons + preview

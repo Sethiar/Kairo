@@ -1,52 +1,3 @@
-"""
-VARS_COLORS
-===========
-
-Dictionnaire contenant toutes les variables de couleur utilisées par l'application.
-Ces valeurs constituent les “design tokens” du thème visuel.
-
-Chaque couleur doit être :
-- explicitement nommée (noms fonctionnels, jamais des noms visuels : pas “light_grey”)
-- centralisée ici pour éviter toute duplication
-- utilisée uniquement via le StyleManager (ou import direct si nécessaire)
-
-Exemples d’usage :
-------------------
-
-Dans un stylesheet Python :
-
-    color = StyleManager.get("TEXT_COLOR_1")
-
-Dans un widget PyQt :
-
-    widget.setStyleSheet(f"background-color: {StyleManager.get('PRIMARY_COLOR')};")
-
-Couleurs disponibles :
-----------------------
-
-- PRIMARY_COLOR           : Couleur principale du thème (branding)
-- SECONDARY_COLOR         : Couleur secondaire (accents secondaires)
-- ACCENT_COLOR            : Couleur d'accentuation (actions importantes)
-- BACKGROUND_COLOR        : Couleur de fond des pages
-- INPUT_BACKGROUND_COLOR  : Fond des champs de saisie
-- MENU_BACKGROUND_COLOR   : Fond des menus latéraux
-- WIDGET_BACKGROUND_COLOR : Fond des widgets personnalisés
-- TEXT_COLOR_1            : Texte clair (titres, éléments contrastés)
-- TEXT_COLOR_2            : Texte foncé (paragraphe, contenu standard)
-- HOVER_COLOR             : Couleur au survol
-- DISABLED_COLOR          : Couleur d'état désactivé
-- BORDER_COLOR            : Couleur des bordures
-
-**  Ces couleurs sont utilisées dans les boutons, menus, labels, layouts,
-input fields, et widgets personnalisés.
-
-**  Toutes les nouvelles couleurs doivent être ajoutées ici et jamais 
-directement dans les styles.
-
-** Rappel : utilisez StyleManager.get("NAME") uniquement, jamais une valeur brute (#xxxxxx)
-dans un widget si vous souhaitez garantir la cohérence visuelle et la maintenabilité.
-"""
-
 
 # ============================
 # COULEURS
@@ -54,17 +5,18 @@ dans un widget si vous souhaitez garantir la cohérence visuelle et la maintenab
 
 VARS_COLORS = {
     
-    "Test": "#1F2C3A",
+    "Test": "#FFD700",
     # Couleurs principales du thème
-    "PRIMARY_COLOR": "#E68516",
+    "PRIMARY_COLOR": "#E28222",
     "SECONDARY_COLOR": "#E2EE38",
     "ACCENT_COLOR": "#E74C3C",
+    
     
     #--------------------------
     # Couleurs des backgrounds
     #--------------------------
     "BACKGROUND_COLOR": "#FFFFFF",
-    "SETTINGS_BG_COLOR": "#D4E0F1F9",
+    "SETTINGS_BG_COLOR": "#C2CDDBF8",
     "MENU_BACKGROUND_COLOR": "#22313F",
     
     
@@ -72,7 +24,13 @@ VARS_COLORS = {
     # Couleurs Inputs
     #---------------------------
     # Couleurs de fond des inputs
-    "BG_INPUT":"#FFFFFF",
+    "INPUT_BACKGROUND_COLOR":"#FFFFFF",
+    
+    
+    #--------------------------
+    # Couleurs d'état
+    #--------------------------
+    "BG_DISABLED_COLOR": "#95A5A6",
 
     
     #---------------------------
@@ -104,11 +62,6 @@ VARS_COLORS = {
     # Couleurs des textes des settings
     "SETTING_TITLE_COLOR": "#1a1d1f",
     
-    
-    #--------------------------
-    # Couleurs d'état
-    #--------------------------
-    "DISABLED_COLOR": "#95A5A6",
     
     
     #--------------------------

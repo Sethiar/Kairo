@@ -8,9 +8,10 @@ from app.core.settings.user_logic import UserLogic
 from app.styles.style_manager import StyleManager
 from app.ui.screens.settings.settings_widgets.hover_button import HoverButton
 
+from app.ui.screens.settings.settings_widgets.subtitle_label import SubtitleLabel
 from app.ui.screens.settings.settings_widgets.custom_widgets import CustomLineEdit
 from app.ui.screens.settings.settings_widgets.separator_widgets import CustomSeparator
-from app.ui.screens.settings.settings_widgets.title_lable import TitleLabel
+from app.ui.screens.settings.settings_widgets.title_label import TitleLabel
 
 
 
@@ -48,14 +49,23 @@ class UserSection(QWidget):
     def _init_content(self):
         content_widget = QWidget()
         content_layout = QHBoxLayout()
-        content_layout.setContentsMargins(0, 0, 0, 0)
+        content_layout.setContentsMargins(50, 0, 0, 0)
         content_layout.setSpacing(60)
         content_widget.setLayout(content_layout)
 
+        # --- FORM ---
+        form_layout = QVBoxLayout()
+        form_layout.setSpacing(18)
+
+        self.input_name = self._add_labeled_input("Nom :", form_layout)
+        self.input_email = self._add_labeled_input("Email :", form_layout)
+        self.enable_notifications = QCheckBox("Activer les notifications")
+        form_layout.addWidget(self.enable_notifications)
+        
         # --- AVATAR ---
         avatar_layout = QVBoxLayout()
         avatar_layout.setSpacing(12)
-        avatar_layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
+        avatar_layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)
 
         self.avatar_label = QLabel()
         self.avatar_label.setFixedSize(self.AVATAR_SIZE, self.AVATAR_SIZE)
@@ -66,23 +76,15 @@ class UserSection(QWidget):
         self.btn_avatar = HoverButton("Changer l'avatar", width=160, height=40)
         self.btn_avatar.clicked.connect(self.on_change_avatar)
 
-        avatar_layout.addWidget(self.avatar_label, alignment=Qt.AlignmentFlag.AlignHCenter)
-        avatar_layout.addWidget(self.btn_avatar, alignment=Qt.AlignmentFlag.AlignHCenter)
+        avatar_layout.addWidget(self.avatar_label, alignment=Qt.AlignmentFlag.AlignLeft)
+        avatar_layout.addWidget(self.btn_avatar, alignment=Qt.AlignmentFlag.AlignLeft)
+        
+        content_layout.addLayout(form_layout)
+        content_layout.setSpacing(200)
         content_layout.addLayout(avatar_layout)
 
-        # --- FORM ---
-        form_layout = QVBoxLayout()
-        form_layout.setSpacing(18)
-
-        self.input_name = self._add_labeled_input("Nom :", form_layout)
-        self.input_email = self._add_labeled_input("Email :", form_layout)
-        self.enable_notifications = QCheckBox("Activer les notifications")
-        self.enable_notifications.setStyleSheet(f"font-size: {StyleManager.get('FONT_SIZE_SETTINGS')};")
-        form_layout.addWidget(self.enable_notifications)
-
-        content_layout.addLayout(form_layout)
+       
         self.main_layout.addWidget(content_widget)
-        self.main_layout.addStretch()
 
     # --------------------
     # INPUT FACTORY
@@ -91,16 +93,18 @@ class UserSection(QWidget):
         layout = QHBoxLayout()
         layout.setSpacing(10)
 
-        label = QLabel(label_text)
+        label = SubtitleLabel(label_text)
         label.setFixedWidth(120)
-        label.setStyleSheet(f"font-size: {StyleManager.get('FONT_SIZE_SETTINGS')};")
-
+        
         input_field = CustomLineEdit(width=250)
+    
+        layout.setAlignment(Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignLeft)
         layout.addWidget(label)
         layout.addWidget(input_field)
         parent_layout.addLayout(layout)
 
         return input_field
+
 
     # --------------------
     # LOGIC

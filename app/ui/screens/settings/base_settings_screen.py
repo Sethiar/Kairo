@@ -1,10 +1,9 @@
 # app/ui/screens/settings/base_settings_screen.py
 
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QMessageBox
+from PyQt6.QtWidgets import QWidget,  QMessageBox
 from PyQt6.QtCore import Qt
 
 from app.ui.screens.base_screen import BaseScreen
-from app.styles.style_manager import StyleManager
 from app.ui.screens.settings.settings_widgets.hover_button import HoverButton
 
 
@@ -12,7 +11,6 @@ class BaseSettingsScreen(BaseScreen):
     """
     Base pour l'écran des Paramètres
     - Hérite de BaseScreen
-    - Scroll inclus automatiquement
     - Sections + bouton de sauvegarde
     """
 
@@ -29,11 +27,11 @@ class BaseSettingsScreen(BaseScreen):
         )
         self.save_btn.clicked.connect(self.save_all_sections)
 
-        self.layout.addWidget(self.save_btn, alignment=Qt.AlignmentFlag.AlignRight)
+        self.inner_layout.addWidget(self.save_btn, alignment=Qt.AlignmentFlag.AlignRight)
 
     # Ajouter une section
     def add_section(self, section_widget: QWidget):
-        self.layout.insertWidget(self.layout.count() - 1, section_widget)
+        self.inner_layout.insertWidget(self.inner_layout.count() - 1, section_widget)
         self.sections.append(section_widget)
 
     # Sauvegarde globale

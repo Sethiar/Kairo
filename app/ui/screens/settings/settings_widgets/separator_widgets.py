@@ -18,6 +18,6 @@ class CustomSeparator(QFrame):
     
     def apply_theme(self):
         self.setStyleSheet(f"""
-            background-color: {StyleManager.get('LINE_COLOR')};
+            background-color: {StyleManager.get('LINE_SETTING_COLOR')};
         """)  
    

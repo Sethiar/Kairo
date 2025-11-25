@@ -14,14 +14,14 @@ class AppearenceLogic:
     
     
     def apply_current_theme(self):
-        theme = self.settings.get("theme") or "Clair"
-        self.theme_manager.load_theme("dark" if theme.lower() == "sombre" else "light")
+        theme = self.settings.get("theme") or "Light"
+        self.theme_manager.load_theme("dark" if theme.lower() == "dark" else "light")
         
         
     def load_settings(self):
         """Retourne un dict avec les valeurs actuelles ou par défaut"""
         return {
-            "theme": self.settings.get("theme") or "Clair",
+            "theme": self.settings.get("theme") or "Light",
             "font_size": self.settings.get("font_size") or "Normal"
         }
 
@@ -29,7 +29,7 @@ class AppearenceLogic:
         if theme:
             self.settings.set("theme", theme)
             # Application immédiate du thème
-            self.theme_manager.load_theme("dark" if theme.lower() == "sombre" else "light")
+            self.theme_manager.load_theme("dark" if theme.lower() == "dark" else "light")
         if font_size:
             self.settings.set("font_size", font_size)
         self.settings.save()

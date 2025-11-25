@@ -22,6 +22,7 @@ class SettingsManager:
             "user_email": "",
             "notifications_enabled": True,  # valeur par défaut
             "theme": "Clair",
+            "font_size": "Normal",
             "music_volume": 50,
             "music_files": []
         }

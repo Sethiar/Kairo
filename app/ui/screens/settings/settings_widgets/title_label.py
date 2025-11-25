@@ -14,11 +14,12 @@ class TitleLabel(QLabel):
         # Se connecter au signal du ThemeManager
         ThemeManager.get_instance().theme_changed.connect(self.apply_theme)
 
+    
     def apply_theme(self):
         self.setStyleSheet(f"""
             QLabel {{
-                font-size: {StyleManager.get('FONT_SIZE_TITLE_SETTING')}px;
+                font-size: {StyleManager.get_scaled_font('FONT_SIZE_TITLE_SETTING')};
                 font-weight: {StyleManager.get('FONT_WEIGHT_BOLD')};
-                color: {StyleManager.get('TEXT_COLOR_2')};
+                color: {StyleManager.get('SETTING_TITLE_COLOR')};
             }}
         """)

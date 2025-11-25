@@ -18,6 +18,7 @@ class MainWindow(QMainWindow):
         self.setMinimumSize(1200, 800)
 
         self.theme_manager = ThemeManager.get_instance()
+        self.theme_manager.load_user_settings() 
         self.theme_manager.theme_changed.connect(self.apply_global_theme)
 
         # -----------------------
@@ -49,6 +50,7 @@ class MainWindow(QMainWindow):
         # Initial stylesheet
         self.apply_global_theme()
 
+
     # -----------------------
     # Application du thème
     # -----------------------
@@ -57,14 +59,15 @@ class MainWindow(QMainWindow):
 
         # Police
         family = StyleManager.get("FONT_FAMILY").split(",")[0].strip()
-        size = int(str(StyleManager.get("FONT_SIZE_DEFAULT")).replace("px", "").strip())
-
+        size_px = StyleManager.get_scaled_font("FONT_SIZE_DEFAULT") 
+        size = int(size_px.replace("px", ""))
+        
         font = QFont(family, size)
         app.setFont(font)
 
         # Background global
         self.setStyleSheet(f"""
-            background-color: {StyleManager.get("BACKGROUND_COLOR")};
+            background-color: #22313F;
             color: {StyleManager.get("TEXT_COLOR_1")};
         """)
 
