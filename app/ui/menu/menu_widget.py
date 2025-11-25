@@ -1,7 +1,7 @@
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QSizePolicy, QSpacerItem
 from PyQt6.QtCore import Qt, pyqtSignal
 
-from app.ui.screens.settings.settings_widgets.display_items import LogoDisplayItem
+from app.ui.widgets.settings_widgets.display_items import LogoDisplayItem
 from .menu_button import MenuButton
 
 

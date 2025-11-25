@@ -6,12 +6,12 @@ from PyQt6.QtGui import QCursor
 
 from app.core.settings.user_logic import UserLogic
 from app.styles.style_manager import StyleManager
-from app.ui.screens.settings.settings_widgets.hover_button import HoverButton
 
-from app.ui.screens.settings.settings_widgets.subtitle_label import SubtitleLabel
-from app.ui.screens.settings.settings_widgets.custom_widgets import CustomLineEdit
-from app.ui.screens.settings.settings_widgets.separator_widgets import CustomSeparator
-from app.ui.screens.settings.settings_widgets.title_label import TitleLabel
+from app.ui.widgets.settings_widgets.hover_button import HoverButton
+from app.ui.widgets.settings_widgets.subtitle_label import SubtitleLabel
+from app.ui.widgets.settings_widgets.custom_widgets import CustomLineEdit
+from app.ui.widgets.settings_widgets.separator_widgets import CustomSeparator
+from app.ui.widgets.settings_widgets.title_label import TitleLabel
 
 
 

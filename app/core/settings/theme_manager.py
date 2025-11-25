@@ -2,8 +2,9 @@ from PyQt6.QtCore import QObject, pyqtSignal
 
 from pathlib import Path
 import json
-import os
+
 from app.styles.style_manager import StyleManager
+
 
 class ThemeManager(QObject):
     theme_changed = pyqtSignal()
@@ -28,7 +29,9 @@ class ThemeManager(QObject):
         self.current_theme = theme_name.lower()
         self.load_theme(self.current_theme)
     
-    # dans ThemeManager
+    #--------------------------
+    # Dans ThemeManager
+    #--------------------------
     def set_font_scale(self, scale: str):
         try:
             StyleManager.set_font_scale(scale)
@@ -88,4 +91,7 @@ class ThemeManager(QObject):
             self.set_font_scale(font)
 
         except Exception as e:
-            print(f"[ThemeManager] Erreur chargement paramètres utilisateur : {e}")    
+            print(f"[ThemeManager] Erreur chargement paramètres utilisateur : {e}")
+
+
+

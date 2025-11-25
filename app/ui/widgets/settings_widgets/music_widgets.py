@@ -5,10 +5,9 @@ from PyQt6.QtWidgets import (
     QListWidgetItem, QLabel, QSpacerItem, QSizePolicy
 )
 from PyQt6.QtCore import Qt, QSize
-from PyQt6.QtGui import QIcon
 
 from app.core.settings.music_logic import MusicLogic
-from app.ui.screens.settings.settings_widgets.hover_button import HoverButton
+from app.ui.widgets.settings_widgets.hover_button import HoverButton
 
 from app.assets.assets import ICON_MUSIC
 

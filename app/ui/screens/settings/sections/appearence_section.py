@@ -3,13 +3,12 @@ from PyQt6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout
 from PyQt6.QtCore import Qt
 
 from app.core.settings.appearence_logic import AppearenceLogic
-from app.styles.style_manager import StyleManager
-from app.ui.screens.settings.settings_widgets.hover_button import HoverButton
 
-from app.ui.screens.settings.settings_widgets.custom_widgets import CustomComboBox
-from app.ui.screens.settings.settings_widgets.separator_widgets import CustomSeparator
-from app.ui.screens.settings.settings_widgets.title_label import TitleLabel
-from app.ui.screens.settings.settings_widgets.subtitle_label import SubtitleLabel
+from app.ui.widgets.settings_widgets.hover_button import HoverButton
+from app.ui.widgets.settings_widgets.custom_widgets import CustomComboBox
+from app.ui.widgets.settings_widgets.separator_widgets import CustomSeparator
+from app.ui.widgets.settings_widgets.title_label import TitleLabel
+from app.ui.widgets.settings_widgets.subtitle_label import SubtitleLabel
 
 
 # Classe de le section affichage des paramètres.
@@ -18,6 +17,7 @@ class AppearenceSection(QWidget):
         super().__init__()
         
         self.logic = AppearenceLogic()
+        self.setStyleSheet("background: transparent;")
 
         self.main_layout = QVBoxLayout(self)
         self.main_layout.setContentsMargins(30, 10, 30, 20)

@@ -14,7 +14,7 @@ class SubtitleLabel(QLabel):
     def apply_theme(self):
         self.setStyleSheet(f"""
             QLabel {{
-                font-size: {StyleManager.get('FONT_SIZE_SETTINGS')};       
+                font-size: {StyleManager.get_scaled_font('FONT_SIZE_SETTINGS')};
                 font-weight: {StyleManager.get('FONT_WEIGHT_SEMIBOLD')};            
                 color: {StyleManager.get('TEXT_COLOR_2')};
             }}     

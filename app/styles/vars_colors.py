@@ -5,7 +5,7 @@
 
 VARS_COLORS = {
     
-    "Test": "#FFD700",
+    "Test": "#2B37443",
     # Couleurs principales du thème
     "PRIMARY_COLOR": "#E28222",
     "SECONDARY_COLOR": "#E2EE38",

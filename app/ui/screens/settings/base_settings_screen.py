@@ -1,10 +1,11 @@
 # app/ui/screens/settings/base_settings_screen.py
 
-from PyQt6.QtWidgets import QWidget,  QMessageBox
+from PyQt6.QtWidgets import QWidget
 from PyQt6.QtCore import Qt
 
+from app.ui.widgets.settings_widgets.notification_widget import CustomMessage
 from app.ui.screens.base_screen import BaseScreen
-from app.ui.screens.settings.settings_widgets.hover_button import HoverButton
+from app.ui.widgets.settings_widgets.hover_button import HoverButton
 
 
 class BaseSettingsScreen(BaseScreen):
@@ -40,7 +41,5 @@ class BaseSettingsScreen(BaseScreen):
             if hasattr(section, "on_save"):
                 section.on_save()
 
-        msg = QMessageBox(self)
-        msg.setWindowTitle("Paramètres")
-        msg.setText("Les paramètres ont bien été sauvegardés.")
-        msg.exec()
+        popup = CustomMessage(self, "Paramètres", "Les paramètres ont bien été sauvegardés.")
+        popup.exec()

@@ -1,12 +1,12 @@
 # app/ui/screens/base_screen.py
 
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QScrollArea
+from PyQt6.QtWidgets import QWidget, QVBoxLayout
 from PyQt6.QtCore import Qt
 
 from app.styles.style_manager import StyleManager
 from app.core.settings.theme_manager import ThemeManager
 
-
+from app.ui.widgets.settings_widgets.scroll_widget import CustomScrollArea
 class BaseScreen(QWidget):
     """
     Base commune pour TOUS les écrans.
@@ -25,7 +25,7 @@ class BaseScreen(QWidget):
         # --------------------------
         if scroll:
 
-            scroll_area = QScrollArea()
+            scroll_area = CustomScrollArea()
             scroll_area.setWidgetResizable(True)
              
             self.inner_widget = QWidget()
