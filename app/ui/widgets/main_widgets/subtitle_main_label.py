@@ -4,8 +4,8 @@ from PyQt6.QtWidgets import QLabel
 from app.styles.style_manager import StyleManager
 from app.core.settings.theme_manager import ThemeManager
 
-class SubtitleLabel(QLabel):
-    def _init__(self, label_text, parent=None):
+class SubtitleMainLabel(QLabel):
+    def __init__(self, label_text, parent=None):
         super().__init__(label_text, parent)
         self.apply_theme()
         
@@ -19,6 +19,4 @@ class SubtitleLabel(QLabel):
                 color: {StyleManager.get('TEXT_COLOR_2')};
             }}     
         """)
-                          
-            
-        
+               

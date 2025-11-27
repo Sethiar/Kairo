@@ -1,3 +1,18 @@
+# app/styles/style_manager.py
+
+"""
+Module StyleManager
+
+Gestion centralisée des styles, couleurs, polices, marges et bordures pour Kairo.
+Permet de :
+- charger les thèmes JSON
+- appliquer des tailles de police dynamiques
+- récupérer des variables pour l'UI
+
+Auteur : SethiarWorks
+Date : 01-01-2026
+"""
+
 from typing import Any, Dict
 
 from app.styles.vars_borders import VARS_BORDERS
@@ -13,6 +28,13 @@ from app.styles.vars_widgets import VARS_WIDGETS
 
 # Classe qui centralise toutes les variables de style
 class StyleManager:
+    """
+    Classe statique pour gérer toutes les variables de style de l'application.
+    
+    VARS: dictionnaire contenant toutes les variables (couleurs, bordures, polices, etc.)
+    _SOURCE_FONTS: copie des polices originales pour recalcul lors du scale
+    FONT_SCALE_MAP: mapping des tailles de police ("Petite" | "Normal" | "Grande")
+    """
     VARS: Dict[str, Any] = {
         **VARS_BORDERS,
         **VARS_COLORS,
@@ -25,7 +47,6 @@ class StyleManager:
         **VARS_WIDGETS,
     }
     
-    
     # Méthode pour gérer les tailles de police.
     # Valeur par défaut : normal
     FONT_SCALE_MAP = {
@@ -34,14 +55,14 @@ class StyleManager:
         "Grande": 1.1,
     }
 
-    current_scale = 1.0
-    
-    # Conserver les valeurs sources (non transformées) afin de pouvoir re-calculer proprement.
+    _current_scale: float = 1.0
     _SOURCE_FONTS: Dict[str, Any] = {}
     
     @staticmethod
     def _ensure_source_fonts_cached():
-        # cache les valeurs initiales une fois
+        """
+        Cache les valeurs initiales des polices pour pouvoir les recalculer proprement.
+        """
         if StyleManager._SOURCE_FONTS:
             return
         for k, v in StyleManager.VARS.items():
@@ -51,7 +72,12 @@ class StyleManager:
     
     @staticmethod
     def set_font_scale(scale_name: str):
-        """scale_name: 'Petite' | 'Normal' | 'Grande'"""
+        """
+        Applique un scale global aux polices de l'application.
+
+        Args:
+            scale_name (str): 'Petite', 'Normal', 'Grande'
+        """
         if scale_name not in StyleManager.FONT_SCALE_MAP:
             raise ValueError(f"Scale '{scale_name}' invalide.")
         
@@ -61,34 +87,44 @@ class StyleManager:
     
     @staticmethod
     def _apply_scaled_fonts():
-        """Recalcul des tailes de police en fonction de la taille choisie."""    
-        
-        """Recalcule toutes les clés FONT_* à partir des sources et du _current_scale."""
+        """
+        Recalcule toutes les clés FONT_* à partir des valeurs sources et du scale actuel.
+        """
         StyleManager._ensure_source_fonts_cached()
         scale = StyleManager._current_scale
         updated = {}
         for key, raw in StyleManager._SOURCE_FONTS.items():
-            # raw peut être "16px" ou un int
             if isinstance(raw, str) and raw.endswith("px"):
                 base = int(raw.replace("px", ""))
                 updated[key] = f"{int(round(base * scale))}px"
             elif isinstance(raw, (int, float)):
                 updated[key] = f"{int(round(raw * scale))}px"
             else:
-                # fallback : on laisse tel quel
                 updated[key] = raw
         StyleManager.VARS.update(updated)
-        # debug
+        # TODO: remplacer print par logging si nécessaire
         print(f"[StyleManager] polices recalculées (scale={scale})")     
     
     
     @staticmethod
     def get_scaled_font(key: str) -> str:
-        """Renvoie une string 'Npx' en tenant compte du scale."""
+        """
+        Retourne la valeur d'une police appliquée avec le scale actuel.
+
+        Args:
+            key (str): clé FONT_*
+
+        Returns:
+            str: taille en 'Npx'
+
+        Raises:
+            KeyError: si la clé n'existe pas
+        """
         # si la clé existe et est déjà en px -> retour direct
         val = StyleManager.VARS.get(key)
         if isinstance(val, str) and val.endswith("px"):
             return val
+        
         # si non présent dans VARS mais présent dans source -> recalculer
         StyleManager._ensure_source_fonts_cached()
         src = StyleManager._SOURCE_FONTS.get(key)
@@ -104,10 +140,29 @@ class StyleManager:
 
     @staticmethod
     def get(key: str, default=None):
+        """
+        Récupère une variable de style.
+
+        Args:
+            key (str): clé de VARS
+            default: valeur retournée si clé absente
+
+        Returns:
+            Any: valeur correspondante
+        """
         return StyleManager.VARS.get(key, default)
 
     @staticmethod
     def update(values: Dict[str, Any]):
+        """
+        Met à jour les variables de style avec un dictionnaire.
+
+        Args:
+            values (Dict[str, Any]): dictionnaire de variables
+
+        Notes:
+            Met à jour le cache _SOURCE_FONTS si des FONT_* sont présents.
+        """
         StyleManager.VARS.update(values)
         # si on a mis à jour des FONT_* dans le thème json, mettre à jour le cache source
         # (on préfère conserver les valeurs fournies dans le JSON comme "source")

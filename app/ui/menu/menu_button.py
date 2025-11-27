@@ -28,12 +28,12 @@ class MenuButton(QPushButton):
     
     def _update_font_scale(self):
         """Rafraîchit seulement la taille de police selon le scale actuel"""
-        font_size = StyleManager.get_scaled_font("FONT_SIZE_BULLET")  # ou FONT_SIZE_BUTTON
+        font_size = StyleManager.get_scaled_font("FONT_SIZE_BULLET")
         self.setStyleSheet(self._base_style_template.format(font_size=font_size, active=self.active))
                
     
     def _apply_base_style(self):
-        font_size = StyleManager.get_scaled_font("FONT_SIZE_BULLET")  # taille scalable
+        font_size = StyleManager.get_scaled_font("FONT_SIZE_BULLET")
         self.active = False
         self._base_style_template = """
             QPushButton {{

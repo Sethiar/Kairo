@@ -4,6 +4,7 @@ from PyQt6.QtWidgets import QStackedWidget
 
 from app.ui.panels.right_panel import RightPanel
 from app.ui.screens.settings.settings_screen import SettingsScreen
+from app.ui.screens.screen_tasks.screen_tasks import ScreenTasks
 
 
 class ScreenManager(QStackedWidget):
@@ -18,6 +19,7 @@ class ScreenManager(QStackedWidget):
         self.screens = {
             "screen_home": RightPanel(),
             "screen_settings": SettingsScreen(),
+            "screen_tasks": ScreenTasks(),
         }
 
         # Ajout au stack

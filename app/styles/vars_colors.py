@@ -5,7 +5,7 @@
 
 VARS_COLORS = {
     
-    "Test": "#2B37443",
+    "Test": "#2e3a52",
     # Couleurs principales du thème
     "PRIMARY_COLOR": "#E28222",
     "SECONDARY_COLOR": "#E2EE38",
@@ -16,6 +16,8 @@ VARS_COLORS = {
     # Couleurs des backgrounds
     #--------------------------
     "BACKGROUND_COLOR": "#FFFFFF",
+    "MAIN_BG_COLOR": "#C2CDDBF8",
+    "MAIN_BG_COLOR_HOVER": "#454950",
     "SETTINGS_BG_COLOR": "#C2CDDBF8",
     "MENU_BACKGROUND_COLOR": "#22313F",
     

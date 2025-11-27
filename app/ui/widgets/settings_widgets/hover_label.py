@@ -29,7 +29,7 @@ class HoverLabel(QPushButton):
                 background-color: {self.default_bg};
                 color: {self.default_fg};
                 border-radius: {StyleManager.get('BORDER_RADIUS_BTN')};
-                font-size: {StyleManager.get('FONT_SIZE_SETTINGS')};
+                font-size: {StyleManager.get('FONT_SIZE_SETTING')};
             }}
         """)
 
@@ -39,7 +39,7 @@ class HoverLabel(QPushButton):
                 background-color: {self.hover_bg};
                 color: {self.hover_fg};
                 border-radius: {StyleManager.get('BORDER_RADIUS_BTN')};
-                font-size: {StyleManager.get('FONT_SIZE_SETTINGS')};
+                font-size: {StyleManager.get('FONT_SIZE_SETTING')};
             }}
         """)
         super().enterEvent(event)
