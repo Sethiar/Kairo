@@ -27,14 +27,19 @@ class Assets:
     # =======================
     # Dossiers
     # =======================
+    # Enregistrement du chemin absolu du dossier source
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    # Enregistrement du chemin absolu du dossier des assets
     ASSETS_DIR = os.path.join(BASE_DIR, "assets")
+    # Enregistrement du chemin absolu du dossier des icônes
     ICONS_DIR = os.path.join(ASSETS_DIR, "icons")
+    # Enregistrement du chemin absolu du dossier des images
     IMAGES_DIR = os.path.join(ASSETS_DIR, "images")
 
     # =======================
     # Logos
     # =======================
+    # Dictionnaire reliant les différentes versions du logo en fonction de leur emplacement
     logos = {
         "main": os.path.join(ASSETS_DIR, "logo.svg"),
         "label": os.path.join(ASSETS_DIR, "Kairo.svg"),
@@ -43,6 +48,7 @@ class Assets:
     # =======================
     # Icônes
     # =======================
+    # Dictionnaire reliant les différents icônes
     icons = {
         "left_arrow": QIcon(os.path.join(ICONS_DIR, "left_arrow.svg")),
         "right_arrow": QIcon(os.path.join(ICONS_DIR, "right_arrow.svg")),
@@ -73,6 +79,7 @@ class Assets:
         Affiche un warning si un fichier est manquant.
         """
         all_files = list(cls.logos.values()) + cls.tutorial_images
+        # Itération sur les clés et des icônes
         for key, icon in cls.icons.items():
             # QIcon n'a pas de chemin direct, on ne peut pas vérifier l'existence ici
             continue
@@ -80,6 +87,7 @@ class Assets:
         for file_path in all_files:
             if not os.path.exists(file_path):
                 warnings.warn(f"Fichier manquant : {file_path}")
+
 
     @classmethod
     def get_icon(cls, name: str) -> QIcon:
@@ -94,6 +102,7 @@ class Assets:
         """
         return cls.icons.get(name, QIcon())
 
+
     @classmethod
     def get_logo(cls, name: str) -> str:
         """
@@ -107,6 +116,7 @@ class Assets:
         """
         return cls.logos.get(name, "")
 
+
     @classmethod
     def get_tutorial_images(cls) -> list[str]:
         """
@@ -116,6 +126,7 @@ class Assets:
             list[str]: Liste des chemins vers les images.
         """
         return cls.tutorial_images
+
 
     @classmethod
     def get_icon_size(cls, size: str) -> QSize:

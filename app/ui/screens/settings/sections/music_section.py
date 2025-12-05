@@ -1,9 +1,9 @@
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QFrame
+from PyQt6.QtWidgets import QWidget, QVBoxLayout
 from PyQt6.QtCore import Qt
 
 from app.ui.widgets.settings_widgets.music_widgets import MusicWidget
-from app.ui.widgets.settings_widgets.separator_widgets import CustomSeparator
-from app.ui.widgets.settings_widgets.title_label import TitleLabel
+from app.ui.widgets.system.separator import CustomSeparator
+from app.ui.widgets.system.label import TitleLabel
 
 class MusicSection(QWidget):
     """Section wrapper (titre + séparateur + widget music)."""

@@ -23,7 +23,7 @@ VARS_FONTS = {
     
     "FONT_SIZES": {
         "Petite": 14,
-        "Normal": 16,
+        "Moyenne": 16,
         "Grande": 18,
     },
     
@@ -32,6 +32,9 @@ VARS_FONTS = {
     
     # Taille des sous-titres
     "FONT_SIZE_SUBTITLE": "30px",
+    
+    # Taille des titres des thèmes
+    "FONT_THEME_TITLE": "20px",
     
     # Taille de la police du logo
     "FONT_SIZE_LOGO_TITLE": "35px",

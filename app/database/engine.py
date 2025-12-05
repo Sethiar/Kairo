@@ -18,6 +18,7 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -42,6 +43,7 @@ engine = create_engine(
     future=True
 )
 
+
 # =======================
 # Session factory
 # =======================
@@ -57,3 +59,8 @@ Exemple :
     with SessionLocal() as session:
         session.query(Task).all()
 """
+
+
+from app.database.models.task import Task
+# Création de la table task
+Task.metadata.create_all(engine)

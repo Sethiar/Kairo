@@ -51,7 +51,7 @@ class StyleManager:
     # Valeur par défaut : normal
     FONT_SCALE_MAP = {
         "Petite": 0.9,
-        "Normal": 1.0,
+        "Moyenne": 1.0,
         "Grande": 1.1,
     }
 
@@ -76,7 +76,7 @@ class StyleManager:
         Applique un scale global aux polices de l'application.
 
         Args:
-            scale_name (str): 'Petite', 'Normal', 'Grande'
+            scale_name (str): 'Petite', 'Moyenne', 'Grande'
         """
         if scale_name not in StyleManager.FONT_SCALE_MAP:
             raise ValueError(f"Scale '{scale_name}' invalide.")

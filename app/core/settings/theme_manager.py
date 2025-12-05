@@ -18,7 +18,7 @@ from PyQt6.QtCore import QObject, pyqtSignal
 
 from app.styles.style_manager import StyleManager
 
-FontScale = Literal["Small", "Normal", "Big"]
+FontScale = Literal["Petite", "Moyenne", "Grande"]
 
 
 class ThemeManager(QObject):
@@ -92,7 +92,7 @@ class ThemeManager(QObject):
         Applique la taille de police.
 
         Args:
-            scale (FontScale): 'Small', 'Normal' ou 'Big'
+            scale (FontScale): 'Petite', 'Moyenne' ou 'Grande'
         """
         try:
             StyleManager.set_font_scale(scale)
@@ -122,7 +122,7 @@ class ThemeManager(QObject):
                 data = json.load(f)
 
             theme = data.get("theme", "Light")
-            font = data.get("font_size", "Normal")
+            font = data.get("font_size", "Moyenne")
 
             # Appliquer le thème et la police
             self.set_theme(theme)

@@ -1,3 +1,18 @@
+# app/ui/screens/intro/screens.py
+
+"""
+Écran générique pour les étapes du tutoriel.
+
+Structure :
+- Titre
+- Sous-titre
+- Ligne séparatrice
+- Bullets à gauche
+- Image à droite
+
+Tous les styles (tailles, couleurs, marges) proviennent du StyleManager.
+"""
+
 from PyQt6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QLabel, QFrame, QSizePolicy
 )
@@ -17,6 +32,7 @@ class ScreenBase(QWidget):
         # Layout principal vertical
         self.main_layout = QVBoxLayout()
         self.main_layout.setContentsMargins(40, 80, 40, 40)
+
         self.main_layout.setSpacing(30)
         self.setLayout(self.main_layout)
         

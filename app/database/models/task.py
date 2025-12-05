@@ -27,10 +27,10 @@ Base = declarative_base()
 # =======================
 class TaskStatus(str, Enum):
     """Enum pour le statut des tâches."""
-    PENDING = "pending"
-    IN_PROGRESS = "in_progress"
-    COMPLETED = "completed"
-    CANCELLED = "cancelled"
+    A_FAIRE = "À faire"
+    EN_COURS = "En cours"
+    TERMINE = "Terminé"
+    ANNULEE = "Annulée"
     
     
 # =======================
@@ -38,10 +38,10 @@ class TaskStatus(str, Enum):
 # =======================
 class TaskPriority(str, Enum):
     """Enum pour la priorité des tâches."""
-    LOW = "low"
-    MEDIUM = "medium"
-    HIGH = "high"
-    URGENT = "urgent"
+    BASSE = "Basse"
+    MOYENNE = "Moyenne"
+    HAUTE = "Haute"
+    URGENTE = "Urgente"
     
 
 # =======================
@@ -53,6 +53,7 @@ class Task(Base):
 
     Attributs :
         id (int): Identifiant unique de la tâche.
+        theme (str): Thème de la tâche
         title (str): Titre de la tâche.
         status (str): Statut de la tâche (ex : 'En cours', 'Terminé').
         description (str): Description détaillée.
@@ -60,13 +61,21 @@ class Task(Base):
         created_at (datetime): Date de création, générée automatiquement.
         deadline (datetime | None): Date limite de la tâche.
     """
-    __tablename__ = "tasks"
+    __tablename__ = "task"
 
     id: int = Column(Integer, primary_key=True, autoincrement=True)
+    theme: str = Column(String(255), nullable=False)
     title: str = Column(String(255), nullable=False)
-    status: TaskStatus = Column(SQLEnum(TaskStatus), nullable=False, default=TaskStatus.PENDING)
+    status: TaskStatus = Column(
+        SQLEnum(TaskStatus, name="taskstatus", values_callable=lambda x: [e.value for e in x]),
+        nullable=False, 
+        default=TaskStatus.A_FAIRE  
+    )
     description: str = Column(String(1024), nullable=False)
-    priority: Optional[TaskPriority] = Column(SQLEnum(TaskPriority), nullable=True)
+    priority: Optional[TaskPriority] = Column(
+        SQLEnum(TaskPriority, name="taskpriority", values_callable=lambda x: [e.value for e in x]),
+        nullable=True
+    )
     created_at: DateTime = Column(TIMESTAMP, server_default=func.now(), nullable=False)
     deadline: Optional[DateTime] = Column(DateTime, nullable=True)
 

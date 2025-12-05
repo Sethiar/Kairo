@@ -4,6 +4,7 @@ from PyQt6.QtCore import Qt
 from app.core.settings.theme_manager import ThemeManager
 from app.styles.style_manager import StyleManager
 
+
 class CustomMessage(QDialog):
     def __init__(self, parent=None, title="Information", message="Message"):
         super().__init__(parent)

@@ -4,11 +4,11 @@ from PyQt6.QtCore import Qt
 
 from app.core.settings.appearance_logic import AppearanceLogic
 
-from app.ui.widgets.settings_widgets.hover_button import HoverButton
-from app.ui.widgets.settings_widgets.custom_widgets import CustomComboBox
-from app.ui.widgets.settings_widgets.separator_widgets import CustomSeparator
-from app.ui.widgets.settings_widgets.title_label import TitleLabel
-from app.ui.widgets.settings_widgets.subtitle_label import SubtitleLabel
+from app.ui.widgets.system.hover_button import HoverButton
+from app.ui.widgets.system.combo import CustomComboBox
+from app.ui.widgets.system.separator import CustomSeparator
+from app.ui.widgets.system.label import TitleLabel
+from app.ui.widgets.system.label import SubtitleLabel
 
 
 # Classe de le section affichage des paramètres.
@@ -63,7 +63,7 @@ class AppearanceSection(QWidget):
         # Taille police
         self.label_font = SubtitleLabel("Taille police :")
         self.combo_font = CustomComboBox()
-        self.combo_font.addItems(["Petite", "Normal", "Grande"])
+        self.combo_font.addItems(["Petite", "Moyenne", "Grande"])
         
         font_layout = QHBoxLayout()
         font_layout.addWidget(self.label_font)

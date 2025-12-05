@@ -12,7 +12,7 @@ Date : 01-01-2026
 
 import json
 import os
-from typing import Any, Optional
+from typing import Any
 
 
 class SettingsManager:
@@ -41,9 +41,9 @@ class SettingsManager:
         self.settings: dict[str, Any] = {
             "user_name": "",
             "user_email": "",
-            "notifications_enabled": True,  # valeur par défaut
+            "notifications_enabled": True,
             "theme": "Clair",
-            "font_size": "Normal",
+            "font_size": "Moyenne",
             "music_volume": 50,
             "music_files": []
         }

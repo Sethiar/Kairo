@@ -5,10 +5,10 @@
 
 VARS_COLORS = {
     
-    "Test": "#2e3a52",
+    "Test": "#ACCDE2",
     # Couleurs principales du thème
     "PRIMARY_COLOR": "#E28222",
-    "SECONDARY_COLOR": "#E2EE38",
+    "SECONDARY_COLOR": "#C4D7E4",
     "ACCENT_COLOR": "#E74C3C",
     
     
@@ -16,10 +16,19 @@ VARS_COLORS = {
     # Couleurs des backgrounds
     #--------------------------
     "BACKGROUND_COLOR": "#FFFFFF",
-    "MAIN_BG_COLOR": "#C2CDDBF8",
+    "MAIN_BG_COLOR": "#C2CDDB",
     "MAIN_BG_COLOR_HOVER": "#454950",
-    "SETTINGS_BG_COLOR": "#C2CDDBF8",
+    "SETTINGS_BG_COLOR": "#C2CDDB",
     "MENU_BACKGROUND_COLOR": "#22313F",
+    
+    # Background des cartes de tâches
+    "CARD_BG_COLOR": "#C4D7E4",
+    "CARD_BG_COLOR_SELECTED": "#ACCDE2",
+    "CARD_BG_COLOR_HOVER": "#C2CDDB",
+    
+    # Background des cartes des thèmes
+    "THEME_BG_COLOR": "#FFFFFF",
+    "THEME_BG_COLOR_HOVER": "#C2CDDB",
     
     
     #---------------------------

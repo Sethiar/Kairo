@@ -15,17 +15,20 @@ from app.core.settings.settings_manager import SettingsManager
 from app.core.settings.theme_manager import ThemeManager
 
 
+# Enumération des thèmes créés
 class Theme(Enum):
     LIGHT = "Light"
     DARK = "Dark"
 
 
+# Enumération des tailles de polices possibles
 class FontSize(Enum):
-    SMALL = "Small"
-    NORMAL = "Normal"
-    LARGE = "Large"
+    SMALL = "Petite"
+    NORMAL = "Moyenne"
+    LARGE = "Grande"
     
-        
+
+# Classe rendant la logique de la page appearance des settings
 class AppearanceLogic:
     """
     Classe AppearanceLogic
@@ -42,7 +45,9 @@ class AppearanceLogic:
         - Récupère l'instance singleton du ThemeManager.
         - Applique le thème actuel au démarrage.
         """
+        # Instanciation de SettingsManager
         self.settings = SettingsManager()
+        # Instanciation de ThemeManager(Singleton)
         self.theme_manager = ThemeManager.get_instance()
         
         # Chargement du thème au démarrage
@@ -56,8 +61,11 @@ class AppearanceLogic:
 
         Si le paramètre 'theme' n'existe pas, applique 'Light' par défaut.
         """
+        # Définition de la variable pour nommer le thème choisi
         theme_str = self.settings.get("theme") or Theme.LIGHT.value
+        # Mise en commun avec la valeur de la classe Enum
         theme_enum = Theme.DARK if theme_str.lower() == "dark" else Theme.LIGHT
+        # Chargement de la valeur du theme
         self.theme_manager.load_theme(theme_enum.value.lower())
         
     
@@ -70,6 +78,7 @@ class AppearanceLogic:
             dict: Contient 'theme' (str) et 'font_size' (str)
         """
         return {
+            # Retourne les valeurs choisies pour le thème et la police.
             "theme": self.settings.get("theme") or Theme.LIGHT.value,
             "font_size": self.settings.get("font_size") or FontSize.NORMAL.value
         }
@@ -88,6 +97,7 @@ class AppearanceLogic:
             font_size (str, optional): Taille de police ('Small', 'Normal', 'Large', etc.)
         """
          # Validation thème
+         # Vérification de l'existence des themes
         if theme:
             if theme.capitalize() not in Theme._member_names_ and theme.capitalize() not in [t.value for t in Theme]:
                 raise ValueError(f"Theme invalide : {theme}")
@@ -96,9 +106,11 @@ class AppearanceLogic:
             self.theme_manager.load_theme("dark" if theme.lower() == "dark" else "light")
 
         # Validation taille de police
+        # Vérification de l'existence des polices
         if font_size:
             if font_size.capitalize() not in FontSize._member_names_ and font_size.capitalize() not in [f.value for f in FontSize]:
                 raise ValueError(f"FontSize invalide : {font_size}")
+            # Application immédiate
             self.settings.set("font_size", font_size)
 
         # Sauvegarde finale

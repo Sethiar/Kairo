@@ -5,7 +5,9 @@ from PyQt6.QtCore import Qt
 
 from app.ui.widgets.settings_widgets.notification_widget import CustomMessage
 from app.ui.screens.base_screen import BaseScreen
-from app.ui.widgets.settings_widgets.hover_button import HoverButton
+from app.ui.widgets.system.hover_button import HoverButton
+
+from app.styles.style_manager import StyleManager
 
 
 class BaseSettingsScreen(BaseScreen):
@@ -26,14 +28,32 @@ class BaseSettingsScreen(BaseScreen):
             width=250,
             height=40
         )
+        
+        # Application du style
+        self.apply_theme()
+        
+        # Connexion pour sauver les paramètres
         self.save_btn.clicked.connect(self.save_all_sections)
-
+        
+        # Alignements à droite du bouton de sauvegarde
         self.inner_layout.addWidget(self.save_btn, alignment=Qt.AlignmentFlag.AlignRight)
 
+    
+    
+    # Méthode pour appliquer les styles
+    def apply_theme(self):
+        self.setStyleSheet(f"""
+            font-size: {StyleManager.get_scaled_font('FONT_SIZE_SETTING')};
+            background-color: {StyleManager.get('MAIN_BG_COLOR')};
+            border-radius: {StyleManager.get('BORDER_RADIUS')};
+        """) 
+    
+    
     # Ajouter une section
     def add_section(self, section_widget: QWidget):
         self.inner_layout.insertWidget(self.inner_layout.count() - 1, section_widget)
         self.sections.append(section_widget)
+
 
     # Sauvegarde globale
     def save_all_sections(self):

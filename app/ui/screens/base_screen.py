@@ -6,7 +6,7 @@ from PyQt6.QtCore import Qt
 from app.styles.style_manager import StyleManager
 from app.core.settings.theme_manager import ThemeManager
 
-from app.ui.widgets.settings_widgets.scroll_widget import CustomScrollArea
+from app.ui.widgets.system.scroll_widget import CustomScrollArea
 class BaseScreen(QWidget):
     """
     Base commune pour TOUS les écrans.
@@ -17,6 +17,9 @@ class BaseScreen(QWidget):
 
     def __init__(self, scroll=False):
         super().__init__()
+        
+        self.setProperty("class", "base-screen")
+        
         self.outer_layout = QVBoxLayout(self)
         self.outer_layout.setContentsMargins(0, 0, 0, 0)
         
@@ -38,20 +41,5 @@ class BaseScreen(QWidget):
         else:
             self.inner_widget = self
             self.inner_layout = QVBoxLayout(self)
-            
-        # Thème appliqué ici
-        self.apply_theme()    
-        
-        # Mise à jour dynamique
-        ThemeManager.get_instance().theme_changed.connect(self.apply_theme)
-        
-    
-    def apply_theme(self):
-        """Applique le thème au fond de tous les écrans."""
-        self.setStyleSheet(f"""
-            QWidget {{
-                background-color: {StyleManager.get('SETTINGS_BG_COLOR')};
-            }}
-        """)
-        
-        
+             
+   

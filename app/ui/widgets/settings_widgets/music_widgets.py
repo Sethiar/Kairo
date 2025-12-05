@@ -7,7 +7,7 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import Qt, QSize
 
 from app.core.settings.music_logic import MusicLogic
-from app.ui.widgets.settings_widgets.hover_button import HoverButton
+from app.ui.widgets.system.hover_button import HoverButton
 
 from app.assets.assets import ICON_MUSIC
 
